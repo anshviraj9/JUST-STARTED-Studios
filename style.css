@@ -1,0 +1,754 @@
+@font-face {
+    font-family: neu;
+    src: url(./NeueHaasDisplayMediu.ttf);
+}
+
+@font-face {
+    font-family: neu;
+    font-weight: 100;  /*by doing this actually we'll get this font-weight only at this font-family*/
+    src: url(./NeueHaasDisplayLight.ttf);
+}
+
+@font-face {
+    font-family: neu;
+    font-weight: 200;
+    src: url(./NeueHaasDisplayRoman.ttf);
+}
+/*@font-face used to set a short name for your font family names for our easiness*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: neu;
+}
+
+html, body {
+    height: 100%;
+    width: 100%;
+}
+
+#main {
+    /* background-color: #000; */
+    position: relative;
+    z-index: 10;
+}
+
+#page1 {
+    min-height: 100vh;      /*if % used instead of vh(viewport height) then it can't take height as we are not gin=ving height to its parent main div as we will be using locomotive in it &&& min-height means that heightgiven to it should minimum be that value*/
+    width: 100%;
+    background-color: #EFEAE3;
+    position: relative;     /*this is done to children whenever they have parents*/
+    padding: 0 2vw;
+}
+
+nav {
+    padding: 2vw 0vw;            /*top left*/
+    width: 100%;
+    /* background-color: red; */
+    display: flex;
+    align-items: center;
+    position: relative;
+    z-index: 100;
+    justify-content: space-between;
+}
+
+#nav-part2 {
+    display: flex;
+    align-items: center;
+    gap: 1vw;                   /*gap between elements*/
+}
+
+#nav-part2 h4 {
+    padding: 10px 20px;
+    border: 1px solid #0000003c;   /*to create shape around*/
+    border-radius: 50px;             /*those buttons*/
+    font-weight: 500;
+    color: #000000bb;
+    transition: all ease 0.4s;
+    position: relative;
+    font-size: 18px;
+    overflow: hidden;        /*this is done bcoz our black box is coming from below so to avoid that overflow of black colour out of that box*/
+}
+/*for that hovering animation in those boxes*/
+#nav-part2 h4::after {
+    content: "";                /*to write something inside boxes*/
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-color: black;
+    left: 0;
+    bottom: -100%;
+    border-radius: 50%;
+    transition: all ease 0.4s;
+}
+
+#nav-part2 h4:hover::after {    /*if we write like #nav-part2 h4: hover ::after means just give space between hover and :: then it will only work upon text inside box but now it'll work upon whole box*/
+    bottom: 0;
+    border-radius: 0;
+}
+
+#nav-part2 h4 a {
+    color: #000000bb;         /*to give black colour to that hyperlink*/
+    text-decoration: none;      /*to remove underline from hyperlink*/
+    position: relative;
+    z-index: 9;
+}
+
+#nav-part2 h4:hover a {         
+    color: #fff;              /*set colour of hover to text*/
+}
+
+nav h3 {
+    display: none;   /*to remove the MENU displayed in normal mode*/
+}
+
+#center {
+    height: 65vh;
+    width: 100%;
+    /* background-color: orange; */
+    display: flex;
+    align-items: flex-end;              /*cheezein bottom mein baith jaaengi*/
+    justify-content: space-between;
+    border-bottom: 1px solid #0000003c;
+    padding-bottom: 2.5vw;
+}
+
+#left h3 {
+    height: 100;
+    width: 25vw;
+    font-size: 1.8vw;
+    line-height: 2vw;   /*adjust heights between the lines*/
+}
+
+#center h1 {
+    font-size: 10vw;
+    text-align: right;
+    line-height: 8vw;
+}
+
+#page1 video {
+    position: relative;  /*to place it above gliding animation*/
+    border-radius: 30px;
+    margin-top: 4vw;
+    width: 100%;
+}
+
+#hero-shape {
+    position: absolute;
+    width: 46vw;
+    height: 36vw;
+    right: 0;
+    top: 65vh;
+}
+
+#hero-1 {
+    background-color: #FE320A;
+    height: 100%;
+    width: 100%;
+    border-top-left-radius: 50%;
+    border-bottom-left-radius: 50%;
+    filter: blur(10px);
+    position: absolute;
+}
+
+#hero-2 {
+    background: linear-gradient(#FE320A, #fe3f0a);
+    height: 30vw;
+    width: 30vw;
+    border-radius: 50%;
+    position: absolute;
+    animation-name: anime2;
+    animation-duration: 5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    filter: blur(25px);
+}
+
+#hero-3 {
+    background: linear-gradient(#FE320A, #fe3f0a);
+    height: 30vw;
+    position: absolute;
+    width: 30vw;
+    border-radius: 50%;
+    filter: blur(25px);
+    animation-name: anime1;
+    animation-duration: 5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+@keyframes anime1 {
+    from {
+        transform: translate(55%, -3%);
+    }
+    to {
+        transform: translate(0%, 10%);
+    }
+}
+
+@keyframes anime2 {
+    from {
+        transform: translate(5%, -5%);
+    }
+    to {
+        transform: translate(-20%, 30%);
+    }
+}
+
+#page2 {
+    min-height: 100vh;
+    width: 100%;
+    background-color: #EFEAE3;
+    padding: 8vw 0;
+    position: relative;
+}
+
+#moving-text {
+    overflow-x: auto;   /*jo pahle pura page scroll horha tha ab sirf div scroll hoga*/
+    white-space: nowrap;
+}
+/*to remove the scroll-bar displayed in the div, that was due to the overflow-x : auto*/
+#moving-text::-webkit-scrollbar {
+    display: none;
+}
+
+.con {
+    white-space: nowrap;               /* to make all possible children in one line not necessary touse as we are using inline also*/
+    display: inline-block;
+    animation-name: move;              /* animation was declared to it */
+    animation-duration: 10s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+
+#moving-text h1 {
+    font-size: 9vw;                    /* background-color: lightblue; */
+    display: inline-block;             /*make all h1's in one line so to generate the animation*/
+}
+
+#gola {
+    height: 70px;
+    width: 70px;
+    border-radius: 50%;
+    display: inline-block;             /* to make that gola ahead of our text */
+    background-color: #FE320A;
+    margin: 1vw 2vw;
+}
+/*animation for the moving text*/                            
+@keyframes move {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(-100%);
+    }
+}
+
+#page2-bottom {
+    height: 80vh;
+    width: 100%;
+    /* background-color: aliceblue; */
+    padding: 4.5vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;    /*to make both contents of div spaced at some distance apart*/
+    position: relative;
+    z-index: 9;                       /*to make text above that gooey part*/
+}
+
+#page2-bottom h1 {
+    font-size: 4vw;
+    width: 60%;
+    line-height: 4vw;
+}
+
+#bottom-part2 {
+    width: 20%;
+    /* background-color: aqua; */
+}
+
+#bottom-part2 img {
+    width: 100%;
+    border-radius: 15px;
+}
+
+#bottom-part2 p {
+    /* padding-top: 20vh; */
+    font-weight: 200;
+    margin-top: 2vw;   /*to take a gap between photo & text*/
+    font-size: 1vw;
+}
+
+#page2 #pattern {
+    height: 32vw;
+    width: 32vw;
+    position: absolute;
+    border-radius: 50%;
+    background: linear-gradient(to top right, #ff2d03, #ff5c0b);
+    /* background: linear-gradient(to top right,red,blue); */
+    /* this will make color to gradiate from bottom to top and to right */
+    /* by default color is gradient from top to bottom */
+    top: 58%;
+    left: 25%;
+    filter: blur(20px);
+    animation-name: pattern-animate;
+    animation-duration: 6s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-timing-function: ease-in-out;
+
+}
+
+@keyframes pattern-animate {
+    from {
+        filter: blur(20px);
+        transform: translate(10%, -10%) skew(0);
+        /*                 right, bottom            in short it is moving in both in x & y direction */
+    }
+
+    to {
+        filter: blur(30px);
+        transform: translate(-10%, 10%) skew(-12deg);
+        /*                   left, top  this makes the change in shaping when moving in an direction          */
+    }
+}
+
+
+
+
+#page3 {
+    min-height: 100vh;
+    width: 100%;
+    background-color: #EFEAE3;
+    padding: 4vw 0;
+}
+
+.elem {/*orange color rectangle for that hover animation*/
+    height: 150px;
+    width: 100%;
+    position: relative;  /*so not to make the animation disturb */
+    border-bottom: 1px solid #38383864;
+    overflow: hidden;    /*it'll get hidden inside the web-page and will come as if like it is coming after our hovering*/
+    display: flex;
+    align-items: center; /* so as to make elements align at center */
+    padding: 0 2vw;
+}
+
+.elem h2 {/*written tags in the orange hovering*/
+    font-size: 3vw;
+    position: relative;
+    z-index: 9;
+}
+
+.elem .overlay {
+    height: 100%;
+    width: 100%;
+    background-color: orange;
+    position: absolute;
+    left: 0;
+    top: -100%;
+    transition: all ease 0.25s;  /*now the transition of hoverig will come with an ease transition*/
+}
+
+.elem:hover .overlay {
+    top: 0;  /*whenever we'll hover over the h2 the rectangle's position get to 0 as if it is above the text */
+}
+
+
+
+#fixed-image {
+    height: 30vw;
+    width: 24vw;
+    /* background-color: red; */
+    border-radius: 15px;
+    position: fixed;
+    z-index: 99;  /* to make fixed image at a stationary point and above all everything else */
+    left: 50%;
+    top: 25%;
+    display: none; /*to make not visibke during normal traversal of website*/
+    background-size: cover;
+    background-position: center;
+}
+
+/* #page4 {
+    height: 70vh;
+    width: 100%;
+    background-color: #EFEAE3;
+    padding: 10vw 2vw;
+}
+
+.swiper {
+    width: 100%;
+    height: 100%;
+}
+
+.swiper-slide {
+    width: 30%;
+    border-left: 1px solid #aeadad;
+    padding: 0 2vw;
+} */
+
+#page5 {
+    height: 100vh;
+    width: 100%;
+    position: relative;
+    /* background-color: #EFEAE3; */
+}
+
+#footer {
+    position: fixed;
+    height: 105vh;
+    width: 100%;
+    background-color: #000;
+    color: #fff;
+    z-index: 9;
+    bottom: 0;
+    display: flex;
+    /* align-items: flex-end; */
+    justify-content: flex-end;/*so that wo likha hua neeche baitha rahe*/
+    flex-direction: column;
+    padding: 1vw 3vw;
+    /* position: absolute; */
+}
+
+/* #page5 #shape {
+    height: 32vw;
+    width: 32vw;
+    position: absolute;
+    border-radius: 50%;
+    background: linear-gradient(to top right, #ff2d03, #ff5c0b);
+    /* background: linear-gradient(to top right,red,blue); */
+    /* this will make color to gradiate from bottom to top and to right */
+    /* by default color is gradient from top to bottom */
+    /* top: 58%;
+    left: 25%;
+    filter: blur(20px);
+    animation-name: shape-animate;
+    animation-duration: 6s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-timing-function: ease-in-out;
+
+} */
+
+/* @keyframes shape-animate {
+    from {
+        filter: blur(20px);
+        transform: translate(10%, -10%) skew(0);
+        /*                 right, bottom            in short it is moving in both in x & y direction */
+    /* }
+
+    to {
+        filter: blur(30px);
+        transform: translate(-10%, 10%) skew(-12deg); */
+        /*                   left, top  this makes the change in shaping when moving in an direction          */
+    /* }
+} */ */
+
+#footer-top {
+    background-color: #EFEAE3;
+    border-bottom: 1px solid #dadada;
+    height: 10vh;
+    width: 100%;
+}
+
+#footer h1 {
+    font-size: 14vw;
+    position: "relative";
+}
+
+/* #footer-div {
+    height: 20vh;
+    width: 100%;
+    background-color: red;
+} */
+
+#footer-bottom {
+    background-color: #EFEAE3;
+    border-top: 1px solid #dadada;
+    height: 10vh;
+    width: 100%;
+}
+
+/* #fotter-bottom2 {
+    height: 10vh;
+    background-color: orange;
+} */
+
+#full-scr {           /*screen appears when we click menu button*/
+    height: 100vh;
+    width: 100%;
+    background-color: #00000070;
+    position: fixed;
+    z-index: 99;
+    top: -100%;
+    transition: all ease 0.5s;    /*to set the transition time for that coming screen*/
+}
+
+#full-div1 {                      /*screen which appears when we click menu button*/
+    height: 50%;
+    width: 100%;
+    background-color: #EFEAE3;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+
+}
+
+@media (max-width:600px) {
+
+    #page1 {
+        min-height: 100vh;
+        width: 100vw;
+        padding: 0 0vw;
+    }
+
+    nav {
+        padding: 8vw 5vw;
+        background-color: #EFEAE3;
+        /* padding: 0 5vw; */
+    }
+
+    nav img {
+        transition: all ease 0.2s;
+        height: 9vh;
+    }
+
+    #nav-part2 {
+        display: none;
+    }
+
+    nav h3 {
+        display: block;
+        padding: 3vw 5vw;
+        border: 1px solid #ababab;
+        border-radius: 50px;    /*to make menu button inside a capsule*/
+        font-size: 4vw;
+        font-weight: 200;
+        padding-left: 10vw;
+    }
+
+    #center {
+        height: 62vh;
+        width: 100%;
+        /* background-color: orange; */
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        border-bottom: 1px solid #0000003c;
+        padding: 7vw 5vw;
+        padding-bottom: 10vw;
+        flex-direction: column-reverse;    /*to show text in colum wise & that too in reverse column means (1, 0) & (0, 2)*/
+        position: relative;
+        z-index: 9;
+    }
+
+    #left h3 {
+        width: 50%;
+        font-size: 5vw;
+        line-height: 6vw;
+    }
+
+    #center h1 {
+        /* padding-top: 5vh; */
+        font-size: 12vw;
+        text-align: right;
+        line-height: 15vw;
+    }
+
+    #page1 video {
+        position: relative;
+        border-radius: 15px;
+        margin-top: 4vw;
+        height: 70vh;
+        object-fit: cover;
+        object-position: center;
+        width: 92%;
+        margin-left: 4%;
+    }
+
+    #page2 {
+        min-height: 100vh;
+        width: 100%;
+        background-color: #EFEAE3;
+        padding: 8vw 0;
+        position: relative;
+    }
+
+    #moving-text {
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+
+    #moving-text::-webkit-scrollbar {
+        display: none;
+    }
+
+    .con {
+        white-space: nowrap;
+        display: inline-block;
+        animation-name: move;
+        animation-duration: 10s;
+        animation-timing-function: linear;
+        animation-iteration-count: infinite;
+    }
+
+    #moving-text h1 {
+        font-size: 15vw;
+        /* background-color: lightblue; */
+        display: inline-block;
+    }
+
+    #gola {
+        height: 25px;
+        width: 25px;
+        border-radius: 50%;
+        display: inline-block;
+        background-color: #FE320A;
+        margin: 2vw 2vw;
+    }
+
+    #page2-bottom {
+        height: 90vh;
+        width: 100%;
+        /* background-color: aliceblue; */
+        padding: 10vw 4vw;
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        position: relative;
+        flex-direction: column;
+        z-index: 9;
+    }
+
+    #page2-bottom h1 {
+        font-size: 8vw;
+        width: 100%;
+        line-height: 8vw;
+        padding-bottom: 6vh;
+    }
+
+    #bottom-part2 {
+        width: 70%;
+        /* background-color: aqua; */
+    }
+
+    #bottom-part2 img {
+        width: 100%;
+        border-radius: 10px;
+    }
+
+    #bottom-part2 p {
+        padding-top: 2vh;
+        font-weight: 300;
+        margin-top: 2vw;
+        font-size: 3vw;
+    }
+
+    #page2 #pattern {
+        height: 62vw;
+        width: 62vw;
+        position: absolute;
+        border-radius: 50%;
+        background: linear-gradient(to top right, #ff2d03, #ff5c0b);
+        /* background: linear-gradient(to top right,red,blue); */
+
+        top: 58%;
+        left: 25%;
+        filter: blur(20px);
+        animation-name: pattern-animate;
+        animation-duration: 6s;
+        animation-iteration-count: infinite;
+        animation-direction: alternate;
+        animation-timing-function: ease-in-out;
+    }
+
+    #footer{
+        padding-top: 15vh;
+        padding-bottom: 15vh;
+    }
+
+    #footer-top {
+        /* flex-flow: row; */
+        background-color: #EFEAE3;
+        border-bottom: 1px solid #dadada;
+        height: 10vh;
+        width: 100%;
+    }
+    
+    #footer h1 {
+        padding-top: 10vh;
+        font-size: 15vw;
+        position: "relative";
+        padding-bottom: 10vh;
+    }
+    
+    #footer-bottom {
+        background-color: #EFEAE3;
+        border-top: 1px solid #dadada;
+        height: 10vh;
+        width: 100%;
+        /* padding-bottom: 50vh; */
+    }
+    
+}
+
+#loader{
+    height: 100%;
+    width: 100%;
+    background-color: #000;
+    position: fixed;
+    z-index: 999;
+    top: 0;
+    transition: all ease 0.7s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#loader h1{
+    font-size: 4vw;
+    color: transparent;
+    background: linear-gradient(to right,orange,orangered);
+    -webkit-background-clip: text;     /*helps the text to convert to its background means like taking the background color*/
+    position: absolute;            /*ek k upar ek char jaaenge teeno text*/
+    opacity: 0;                 /*sab gayab*/
+    animation-name: load;
+    animation-duration: 1s;
+    animation-delay: 1s;
+    animation-timing-function: linear;
+}
+
+/*the above function will definitely shows the first entry text*/
+#loader h1:nth-child(2){
+    animation-delay: 2s;   /*this takes delay for first text + that text appearance time in animation*/
+}
+/*this above & below function will make second & third text respectively to appear on loader animation*/
+#loader h1:nth-child(3){
+    animation-delay: 3s;   /*this takes delay for first text + that text appearance time in animation*/
+}
+
+@keyframes load {
+    0%{
+        opacity: 0;       /*  1    ***********         */
+                          /*       *         *         */ 
+    }                     /*       *         *         */
+    10%{                  /*  0 ****         ****      */
+        opacity: 1;       /*    0  10        90 100    */
+    }
+    90%{
+        opacity: 1;
+    }
+    100%{
+        opacity: 0;
+    }
+}
+
+@media (max-width:600px) {
+    #loader h1{
+        font-size: 9vw;
+      
+    }
+}
